@@ -1,8 +1,17 @@
+.header{
+    background-color: black;
+    color:grey;
+    height:50px;
+    width:100%;
+    display:flex;
+    justify-content: space-evenly;
+}
 #background-container{
-    background-color:grey;
+    background-image: linear-gradient(to right,grey,rgb(25,25,128),grey);
     display:flex;
     border:5px solid black;
     justify-content:center;
+
 }
 #todo-app-container{
     height:'auto';
@@ -65,15 +74,21 @@ border:1px solid grey;
     height:20px;
 width:20px;
 }
+
 #todo-list{
     background-color: midnight
 }
-#task{
+#todo-list-container{
+    display:flex;
+    flex-direction:column;
+}
+#todo-list-container>div{
     display:flex;
     align-items: center;
     border:1px solid grey;
+
 }
-#task img{
+#todo-list-container>div img{
     height:30px;
     width:30px;
 }

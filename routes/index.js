@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const todoController = require('../controllers/todo');
 console.log('hello index of routes');
+router.use('/users',require('./users'));
 router.get('/todoApp', todoController.profile);
 router.post('/todoApp', todoController.create);
 router.get('/delete/:id',todoController.delete);

@@ -4,80 +4,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=, initial-scale=1.0">
-    <link rel="stylesheet" href="todolist.css">
     <title><%= title %></title>
+
 </head>
 
 <body>
-    <div id="background-container">
-        <div id="todo-app-container">
 
-            <div id="todo-app">
-                TODO APP
-            </div>
 
-            <form action="/todoApp" method="POST">
-                <div id="description">
-                    DESCRIPTION
-                    <br>
-                    <textarea row="3" cols="60" placeholder="What do you need to do??" name="description" required>
+    <form id="new-list-form" action="/todoApp" method="POST">
+        <div id="description">
+            DESCRIPTION
+            <br>
+            <textarea row="3" cols="60" placeholder="What do you need to do??" name="description" required>
 
                    </textarea>
-                </div>
-                <div id="category-date">
-                    <div id="category">
-                        CATEGORY
-                        <br>
-                        <input list="category-list" name="category" required>
-                        <datalist id="category-list">
-                            <option value="Personal">
-                            <option value="Work">
-                            <option value="School">
-                            <option value="Cleaning">
-                            <option value="Other">
-                        </datalist>
-                    </div>
-                    <div id="date">
-                        DUE DATE
-                        <br>
-                        <input type="date" placeholder="dd/mm/yy" name="date" required>
-                    </div>
-                </div>
-
-                <div id="buttons">
-
-                    <button type="submit" id="add-task">
-                        <img
-                            src="https://t3.ftcdn.net/jpg/03/30/25/74/240_F_330257485_WEd8LDmLkdp4vbJjhbLY263gV0OvsiIF.jpg" />
-                        ADD TASK
-                    </button>
-
-                </div>
-
-            </form>
-            <% for(let list of lists){%>
-            <div id="task">
-
-                <div id="title-date">
-                    <%=list.description%><br>
-                    <img src="https://t4.ftcdn.net/jpg/03/04/12/37/240_F_304123778_IbttypTmYT9Nc4wgKeogv7RmTdUS12PA.jpg"
-                        alt="image">
-                    <%=list.date %>
-                </div>
-                <div id="category-of-list-item">
-                    <%=list.category %>
-                </div>
-                <div id="dustbin">
-                    <a href="/delete/<%=list._id %>">
-                        <img src="https://t4.ftcdn.net/jpg/01/90/89/15/240_F_190891550_N7uKp2aHE3mOc20dmtDytj7atgvbhdOu.jpg"
-                            alt="X">
-                    </a>
-                </div>
-            </div>
-            <%}%>
- 
         </div>
-    </div>
+        <div id="category-date">
+            <div id="category">
+                CATEGORY
+                <br>
+                <input list="category-list" name="category" required>
+                <datalist id="category-list">
+                    <option value="Personal">
+                    <option value="Work">
+                    <option value="School">
+                    <option value="Cleaning">
+                    <option value="Other">
+                </datalist>
+            </div>
+            <div id="date">
+                DUE DATE
+                <br>
+                <input type="date" placeholder="dd/mm/yy" name="date" required>
+            </div>
+        </div>
+
+        <div id="buttons">
+
+            <button type="submit" id="add-task">
+                <img src="https://t3.ftcdn.net/jpg/03/30/25/74/240_F_330257485_WEd8LDmLkdp4vbJjhbLY263gV0OvsiIF.jpg" />
+                ADD TASK
+            </button>
+
+        </div>
+
+    </form>
+    <div id="todo-list-container">
+        <% for(let list of lists){%>
+
+
+        <div id="task-<%=list.id %>">
+
+            <div id="title-date">
+                <%=list.description%><br>
+                <img src="https://t4.ftcdn.net/jpg/03/04/12/37/240_F_304123778_IbttypTmYT9Nc4wgKeogv7RmTdUS12PA.jpg"
+                    alt="image">
+                <%=list.date %>
+            </div>
+            <div id="category-of-list-item">
+                <%=list.category %>
+            </div>
+            <div id="dustbin">
+                <a href="/delete/<%=list._id %> " class="delete-button">
+                    <img src="https://t4.ftcdn.net/jpg/01/90/89/15/240_F_190891550_N7uKp2aHE3mOc20dmtDytj7atgvbhdOu.jpg"
+                        alt="X">
+                </a>
+            </div>
+        </div>
+
+
+        <%}%>
+   </div>
+    <script src="/todolist.js" >
+
+    </script>
+   
 </body>
 
 </html>
