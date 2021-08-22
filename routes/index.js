@@ -1,10 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const todoController = require('../controllers/todo');
-console.log('hello index of routes');
-router.use('/users',require('./users'));
-router.get('/todoApp', todoController.profile);
+
+//this is whent the first time get request of this page will be done
+router.get('/', todoController.profile);
+//this when the user fils the form and then submit it 
 router.post('/todoApp', todoController.create);
+//for deleting 
 router.get('/delete/:id',todoController.delete);
 
 module.exports = router;

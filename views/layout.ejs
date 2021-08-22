@@ -1,3 +1,4 @@
+<!-- //it is the layout which will be used for every web page in this project -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,36 +7,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/todolist.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
+    <!-- header partial is used directly -->
     <%- include('_header.ejs') -%>
     <div id="background-container">
 
         <div id="todo-app-container">
-
+            <!-- here the body of the page will com which will be rendered in the action of the controller -->
             <%- body -%>
         </div>
     </div>
     <%- include('_footer.ejs') -%>
 
-  
+
     <script>
+        // here i have added code so that if any flash message is set to the locals of the response so it should be visible on the browser
         <% if (flash.success && flash.success.length > 0) {%>
-        
+            // noty used for animating the message 
             new Noty(
                 {
-                theme: 'relax',
-                text: '<%= flash.success %>',
-                type: 'sucess',
-                layout: 'topRight',
-                timeout: 1500
-            }
+                    theme: 'relax',
+                    text: '<%= flash.success %>',
+                    type: 'success',
+                    layout: 'topRight',
+                    timeout: 1500
+                }
             ).show();
             <%}%>
-
+// similar thing i done for error also,as done for the success type messages
           <% if (flash.error && flash.error.length > 0) {%>
             new Noty({
                 theme: 'relax',
@@ -47,7 +52,7 @@
             <%}%>
 
     </script>
-     
+
 </body>
 
 </html>

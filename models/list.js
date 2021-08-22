@@ -1,3 +1,4 @@
+//it is the schema of every list item
 const mongoose = require('mongoose');
 const listSchema = new mongoose.Schema({
     description: {
@@ -13,5 +14,6 @@ const listSchema = new mongoose.Schema({
         required: true
     }
 });
+//telling about model to mongoose
 const List = mongoose.model('list', listSchema);
 module.exports = List;

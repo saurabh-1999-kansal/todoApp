@@ -1,3 +1,4 @@
+<!-- this is the main todolist which will go to the body in the layout.ejs -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,8 +11,9 @@
 
 <body>
 
-
+    <!-- it is the form for adding a new list to the user's todo-list -->
     <form id="new-list-form" action="/todoApp" method="POST">
+        <!-- for  description of the task -->
         <div id="description">
             DESCRIPTION
             <br>
@@ -19,6 +21,7 @@
 
                    </textarea>
         </div>
+        <!-- category of the task -->
         <div id="category-date">
             <div id="category">
                 CATEGORY
@@ -32,13 +35,14 @@
                     <option value="Other">
                 </datalist>
             </div>
+            <!-- date til which the user need to do the task -->
             <div id="date">
                 DUE DATE
                 <br>
                 <input type="date" placeholder="dd/mm/yy" name="date" required>
             </div>
         </div>
-
+        <!-- button for adding the task to the list after filling the form -->
         <div id="buttons">
 
             <button type="submit" id="add-task">
@@ -49,10 +53,11 @@
         </div>
 
     </form>
+    <!-- this is the container of the tasks of the user -->
     <div id="todo-list-container">
         <% for(let list of lists){%>
 
-
+        <!-- every particular list item -->
         <div id="task-<%=list.id %>">
 
             <div id="title-date">
@@ -64,6 +69,7 @@
             <div id="category-of-list-item">
                 <%=list.category %>
             </div>
+            <!-- this is for adding the delete functionality directly option is given with every list item -->
             <div id="dustbin">
                 <a href="/delete/<%=list._id %> " class="delete-button">
                     <img src="https://t4.ftcdn.net/jpg/01/90/89/15/240_F_190891550_N7uKp2aHE3mOc20dmtDytj7atgvbhdOu.jpg"
@@ -75,6 +81,7 @@
 
         <%}%>
    </div>
+   <!-- added for implementing ajax  -->
     <script src="/todolist.js" >
 
     </script>
